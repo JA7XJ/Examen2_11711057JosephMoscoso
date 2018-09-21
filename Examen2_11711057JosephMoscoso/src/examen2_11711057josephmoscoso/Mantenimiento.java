@@ -32,4 +32,9 @@ public class Mantenimiento extends Usuarios implements Serializable {
         this.asignados = asignados;
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
 }

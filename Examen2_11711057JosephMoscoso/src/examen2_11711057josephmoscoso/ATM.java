@@ -89,7 +89,7 @@ public class ATM implements Serializable{
 
     @Override
     public String toString() {
-        return "ATM{" + "ubicacion=" + ubicacion + ", id=" + id + ", a\u00f1oFabricacion=" + añoFabricacion + ", mantenimiento=" + mantenimiento + '}';
+        return ubicacion;
     }
 
 }

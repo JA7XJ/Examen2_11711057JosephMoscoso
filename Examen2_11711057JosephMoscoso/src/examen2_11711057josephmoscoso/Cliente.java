@@ -34,7 +34,7 @@ public class Cliente extends Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente{" + "cuentas=" + cuentas + '}';
+        return super.toString();
     }
 
 }

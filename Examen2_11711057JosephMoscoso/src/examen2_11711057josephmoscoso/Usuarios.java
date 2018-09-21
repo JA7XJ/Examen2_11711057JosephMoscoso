@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Joseph
  */
-public class Usuarios implements Serializable{
+public class Usuarios implements Serializable {
 
     private int iduser;
     private String nombre1;
@@ -20,7 +20,7 @@ public class Usuarios implements Serializable{
     private String apellido;
     private String nacimiento;
     private String añoAfiliacion;
-    private ArrayList transacciones = new ArrayList();
+    private ArrayList<transacciones> transacciones = new ArrayList();
     private String contraseña;
 
     public Usuarios() {
@@ -88,7 +88,7 @@ public class Usuarios implements Serializable{
         return transacciones;
     }
 
-    public void setTransacciones(ArrayList transacciones) {
+    public void setTransacciones(ArrayList<transacciones> transacciones) {
         this.transacciones = transacciones;
     }
 
@@ -102,7 +102,7 @@ public class Usuarios implements Serializable{
 
     @Override
     public String toString() {
-        return "Usuarios{" + "iduser=" + iduser + ", nombre1=" + nombre1 + ", nombre2=" + nombre2 + ", apellido=" + apellido + ", nacimiento=" + nacimiento + ", a\u00f1oAfiliacion=" + añoAfiliacion + ", transacciones=" + transacciones + ", contrase\u00f1a=" + contraseña + '}';
+        return nombre1;
     }
 
 }

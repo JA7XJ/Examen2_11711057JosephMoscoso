@@ -5,6 +5,11 @@
  */
 package examen2_11711057josephmoscoso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Joseph
@@ -16,6 +21,23 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        inicio();
+    }
+
+    public void inicio() {
+        administrarATMs a = new administrarATMs("./ATMs.atm");
+        a.cargarArchivo();
+//        DefaultComboBoxModel m = (DefaultComboBoxModel) cb_atm.getModel();
+        if (a.getAtm().isEmpty()) {
+
+        } else {
+            DefaultComboBoxModel m = new DefaultComboBoxModel();
+            for (ATM t : a.getAtm()) {
+                m.addElement(t);
+            }
+            cb_atm.setModel(m);
+        }
+        a.escribirArchivo();
     }
 
     /**
@@ -27,22 +49,394 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_atm = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        tf_fechaATM = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        bt_c = new javax.swing.JButton();
+        tf_ubicacion = new javax.swing.JTextField();
+        tf_id = new javax.swing.JTextField();
+        mante = new javax.swing.JSpinner();
+        b500 = new javax.swing.JSpinner();
+        b100 = new javax.swing.JSpinner();
+        jd_users = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        rb_cliente = new javax.swing.JRadioButton();
+        rb_mantenimiento = new javax.swing.JRadioButton();
+        contra = new javax.swing.JTextField();
+        apellido = new javax.swing.JTextField();
+        fechan = new com.toedter.calendar.JDateChooser();
+        fechaa = new com.toedter.calendar.JDateChooser();
+        nombre2 = new javax.swing.JTextField();
+        nombre1 = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
+        crearu = new javax.swing.JButton();
+        grupo = new javax.swing.ButtonGroup();
+        jd_login = new javax.swing.JDialog();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        tf_iu = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        tf_ip = new javax.swing.JPasswordField();
+        iniciar = new javax.swing.JButton();
+        jd_cliente = new javax.swing.JDialog();
+        jLabel22 = new javax.swing.JLabel();
+        jd_mantenimiento = new javax.swing.JDialog();
+        jLabel23 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        bt_atm = new javax.swing.JButton();
+        bt_users = new javax.swing.JButton();
+        cb_atm = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Creacion ATM");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("Ubicacion");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("ID");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("Fecha de creacion");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Mantenimiento cada cuanto semanas");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setText("Numero Billetes 500");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setText("Numero Billetes 100");
+
+        bt_c.setText("Crear");
+        bt_c.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_cMouseClicked(evt);
+            }
+        });
+
+        mante.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        javax.swing.GroupLayout jd_atmLayout = new javax.swing.GroupLayout(jd_atm.getContentPane());
+        jd_atm.getContentPane().setLayout(jd_atmLayout);
+        jd_atmLayout.setHorizontalGroup(
+            jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_atmLayout.createSequentialGroup()
+                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_atmLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_fechaATM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_ubicacion)
+                            .addComponent(tf_id)
+                            .addGroup(jd_atmLayout.createSequentialGroup()
+                                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(b500)
+                                    .addComponent(mante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                                    .addComponent(b100))
+                                .addGap(203, 203, 203))))
+                    .addGroup(jd_atmLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel3))
+                    .addGroup(jd_atmLayout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(bt_c, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_atmLayout.setVerticalGroup(
+            jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_atmLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tf_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tf_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(tf_fechaATM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(mante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(b500, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_atmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(b100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(bt_c, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setText("Creacion de Usuarios");
+
+        jLabel11.setText("ID");
+
+        jLabel12.setText("Primer nombre");
+
+        jLabel13.setText("Segundo nombre");
+
+        jLabel14.setText("Apellido");
+
+        jLabel15.setText("Fecha de nacimiento");
+
+        jLabel16.setText("Fecha de afiliacion");
+
+        jLabel17.setText("Contraseña");
+
+        jLabel18.setText("Tipo de usuario");
+
+        grupo.add(rb_cliente);
+        rb_cliente.setSelected(true);
+        rb_cliente.setText("Cliente");
+
+        grupo.add(rb_mantenimiento);
+        rb_mantenimiento.setText("Mantenimiento");
+
+        crearu.setText("Crear");
+        crearu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crearuMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_usersLayout = new javax.swing.GroupLayout(jd_users.getContentPane());
+        jd_users.getContentPane().setLayout(jd_usersLayout);
+        jd_usersLayout.setHorizontalGroup(
+            jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_usersLayout.createSequentialGroup()
+                .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_usersLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jLabel10))
+                    .addGroup(jd_usersLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jd_usersLayout.createSequentialGroup()
+                                .addComponent(rb_cliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_mantenimiento))
+                            .addComponent(contra)
+                            .addComponent(apellido)
+                            .addComponent(fechan, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(fechaa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nombre2)
+                            .addComponent(nombre1)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jd_usersLayout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(crearu)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jd_usersLayout.setVerticalGroup(
+            jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_usersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_usersLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jd_usersLayout.createSequentialGroup()
+                                .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jd_usersLayout.createSequentialGroup()
+                                        .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel14)
+                                            .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel15))
+                                    .addComponent(fechan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel16))
+                            .addComponent(fechaa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jd_usersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(rb_cliente)
+                            .addComponent(rb_mantenimiento)))
+                    .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(crearu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel19.setText("Log In");
+
+        jLabel20.setText("ID");
+
+        jLabel21.setText("Contraseña");
+
+        iniciar.setText("Iniciar Sesion");
+        iniciar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iniciarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_loginLayout = new javax.swing.GroupLayout(jd_login.getContentPane());
+        jd_login.getContentPane().setLayout(jd_loginLayout);
+        jd_loginLayout.setHorizontalGroup(
+            jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_loginLayout.createSequentialGroup()
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_loginLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel19))
+                    .addGroup(jd_loginLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_iu)
+                            .addComponent(tf_ip, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)))
+                    .addGroup(jd_loginLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_loginLayout.setVerticalGroup(
+            jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_loginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(tf_iu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(tf_ip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(iniciar)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel22.setText("ATM Cliente");
+
+        javax.swing.GroupLayout jd_clienteLayout = new javax.swing.GroupLayout(jd_cliente.getContentPane());
+        jd_cliente.getContentPane().setLayout(jd_clienteLayout);
+        jd_clienteLayout.setHorizontalGroup(
+            jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_clienteLayout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel22)
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+        jd_clienteLayout.setVerticalGroup(
+            jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_clienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22)
+                .addContainerGap(398, Short.MAX_VALUE))
+        );
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel23.setText("ATM Mantenimiento");
+
+        javax.swing.GroupLayout jd_mantenimientoLayout = new javax.swing.GroupLayout(jd_mantenimiento.getContentPane());
+        jd_mantenimiento.getContentPane().setLayout(jd_mantenimientoLayout);
+        jd_mantenimientoLayout.setHorizontalGroup(
+            jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mantenimientoLayout.createSequentialGroup()
+                .addContainerGap(112, Short.MAX_VALUE)
+                .addComponent(jLabel23)
+                .addGap(107, 107, 107))
+        );
+        jd_mantenimientoLayout.setVerticalGroup(
+            jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mantenimientoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel23)
+                .addContainerGap(267, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("ATM Master Race");
 
-        jButton1.setText("Crear ATM");
+        bt_atm.setText("Crear ATM");
+        bt_atm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_atmMouseClicked(evt);
+            }
+        });
 
-        jButton2.setText("Crear usuario");
+        bt_users.setText("Crear usuario");
+        bt_users.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_usersMouseClicked(evt);
+            }
+        });
 
-        jComboBox1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cb_atm.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cb_atm.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_atmItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setText("ATMs");
 
@@ -59,12 +453,12 @@ public class principal extends javax.swing.JFrame {
                                 .addGap(45, 45, 45)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(bt_atm)
                                 .addGap(61, 61, 61)
-                                .addComponent(jButton2))
+                                .addComponent(bt_users))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cb_atm, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addComponent(jLabel2)))
@@ -77,17 +471,167 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(bt_atm)
+                    .addComponent(bt_users))
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_atm, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_atmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_atmMouseClicked
+        // TODO add your handling code here:
+        try {
+            jd_atm.setModal(true);
+            jd_atm.pack();
+            jd_atm.setLocationRelativeTo(this);
+            jd_atm.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_atmMouseClicked
+
+    private void bt_usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_usersMouseClicked
+        // TODO add your handling code here:
+        try {
+            jd_users.setModal(true);
+            jd_users.pack();
+            jd_users.setLocationRelativeTo(this);
+            jd_users.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_usersMouseClicked
+
+    private void bt_cMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cMouseClicked
+        // TODO add your handling code here:
+        try {
+            administrarATMs a = new administrarATMs("./ATMs.atm");
+            a.cargarArchivo();
+            boolean e = true;
+            for (ATM t : a.getAtm()) {
+                if (Integer.parseInt(tf_id.getText()) == t.getId()) {
+                    e = false;
+                }
+            }
+            if (e == true) {
+                DateFormat f = new SimpleDateFormat("dd/MM/YYYY");
+                ATM nuevo = new ATM(tf_ubicacion.getText(), Integer.parseInt(tf_id.getText()), f.format(tf_fechaATM.getDate()), (int) mante.getValue(), (int) b500.getValue(), (int) b100.getValue());
+                a.getAtm().add(nuevo);
+                JOptionPane.showMessageDialog(jd_atm, "ATM creado con exito");
+                jd_atm.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(jd_atm, "Error, ID repetido");
+            }
+            a.escribirArchivo();
+            inicio();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_atm, "Error, dato incorrecto");
+        }
+    }//GEN-LAST:event_bt_cMouseClicked
+
+    private void crearuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearuMouseClicked
+        // TODO add your handling code here:
+        try {
+            AdminUsuarios a = new AdminUsuarios("./Users.u");
+            a.cargarArchivo();
+            boolean e = true;
+            for (Usuarios t : a.getUsers()) {
+                if (Integer.parseInt(id.getText()) == t.getIduser()) {
+                    e = false;
+                }
+            }
+            if (e == true) {
+                DateFormat f = new SimpleDateFormat("dd/MM/YYYY");
+                if (rb_cliente.isSelected()) {
+                    Cliente cc = new Cliente(Integer.parseInt(id.getText()), nombre1.getText(), nombre2.getText(), apellido.getText(), f.format(fechan.getDate()), f.format(fechaa.getDate()), contra.getText());
+                    a.getUsers().add(cc);
+                    JOptionPane.showMessageDialog(jd_users, "Usuario cliente creado con exito");
+                    jd_users.setVisible(false);
+                } else {
+                    Mantenimiento cc = new Mantenimiento(Integer.parseInt(id.getText()), nombre1.getText(), nombre2.getText(), apellido.getText(), f.format(fechan.getDate()), f.format(fechaa.getDate()), contra.getText());
+                    a.getUsers().add(cc);
+                    JOptionPane.showMessageDialog(jd_users, "Usuario mantenimiento creado con exito");
+                    jd_users.setVisible(false);
+                }
+            } else {
+                JOptionPane.showMessageDialog(jd_users, "Error ID repetido");
+            }
+            a.escribirArchivo();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_users, "Error, dato incorrecto");
+        }
+    }//GEN-LAST:event_crearuMouseClicked
+
+    private void cb_atmItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_atmItemStateChanged
+        // TODO add your handling code here:
+        try {
+            if (cb_atm.getSelectedIndex() >= 0) {
+                jd_login.setModal(true);
+                jd_login.pack();
+                jd_login.setLocationRelativeTo(this);
+                jd_login.setVisible(true);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cb_atmItemStateChanged
+
+    private void iniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciarMouseClicked
+        // TODO add your handling code here:
+        try {
+            AdminUsuarios a = new AdminUsuarios("./Users.u");
+            a.cargarArchivo();
+            if (c < 5) {
+                boolean e = false, cc = true, m = true;
+                for (Usuarios t : a.getUsers()) {
+                    if (tf_iu.getText().equals(Integer.toString(t.getIduser())) && tf_ip.getText().equals(t.getContraseña())) {
+                        e = true;
+                        if (t instanceof Cliente) {
+//                            cc = true;
+                            // m = false;
+                            jd_cliente.setModal(true);
+                            jd_cliente.pack();
+                            jd_cliente.setLocationRelativeTo(this);
+                            jd_cliente.setVisible(true);
+                        }
+                        if (t instanceof Mantenimiento) {
+                            //m = true;
+//                            cc = false;
+                            jd_mantenimiento.setModal(true);
+                            jd_mantenimiento.pack();
+                            jd_mantenimiento.setLocationRelativeTo(this);
+                            jd_mantenimiento.setVisible(true);
+                        }
+                    }
+                }
+                if (e == true) {
+//                    if (cc = true) {
+//                        jd_cliente.setModal(true);
+//                        jd_cliente.pack();
+//                        jd_cliente.setLocationRelativeTo(this);
+//                        jd_cliente.setVisible(true);
+//                    }
+//                    if (cc == false) {
+//                        jd_mantenimiento.setModal(true);
+//                        jd_mantenimiento.pack();
+//                        jd_mantenimiento.setLocationRelativeTo(this);
+//                        jd_mantenimiento.setVisible(true);
+//                    }
+                } else {
+                    JOptionPane.showMessageDialog(jd_login, "Error, datos incorrectos o usuario no existe");
+                    c++;
+                }
+            } else {
+                JOptionPane.showMessageDialog(jd_login, "Numero de intentos alcanzado, el sistema sera bloqueado");
+                tf_iu.setEditable(false);
+                tf_ip.setEditable(false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_login, "Error fatal");
+        }
+    }//GEN-LAST:event_iniciarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,10 +669,58 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField apellido;
+    private javax.swing.JSpinner b100;
+    private javax.swing.JSpinner b500;
+    private javax.swing.JButton bt_atm;
+    private javax.swing.JButton bt_c;
+    private javax.swing.JButton bt_users;
+    private javax.swing.JComboBox<String> cb_atm;
+    private javax.swing.JTextField contra;
+    private javax.swing.JButton crearu;
+    private com.toedter.calendar.JDateChooser fechaa;
+    private com.toedter.calendar.JDateChooser fechan;
+    private javax.swing.ButtonGroup grupo;
+    private javax.swing.JTextField id;
+    private javax.swing.JButton iniciar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JDialog jd_atm;
+    private javax.swing.JDialog jd_cliente;
+    private javax.swing.JDialog jd_login;
+    private javax.swing.JDialog jd_mantenimiento;
+    private javax.swing.JDialog jd_users;
+    private javax.swing.JSpinner mante;
+    private javax.swing.JTextField nombre1;
+    private javax.swing.JTextField nombre2;
+    private javax.swing.JRadioButton rb_cliente;
+    private javax.swing.JRadioButton rb_mantenimiento;
+    private com.toedter.calendar.JDateChooser tf_fechaATM;
+    private javax.swing.JTextField tf_id;
+    private javax.swing.JPasswordField tf_ip;
+    private javax.swing.JTextField tf_iu;
+    private javax.swing.JTextField tf_ubicacion;
     // End of variables declaration//GEN-END:variables
+    int c = 0;
 }
