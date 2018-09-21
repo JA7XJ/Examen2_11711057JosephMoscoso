@@ -23,13 +23,13 @@ public class principal extends javax.swing.JFrame {
         initComponents();
         inicio();
     }
-    
+
     public void inicio() {
         administrarATMs a = new administrarATMs("./ATMs.atm");
         a.cargarArchivo();
 //        DefaultComboBoxModel m = (DefaultComboBoxModel) cb_atm.getModel();
         if (a.getAtm().isEmpty()) {
-            
+
         } else {
             DefaultComboBoxModel m = new DefaultComboBoxModel();
             for (ATM t : a.getAtm()) {
@@ -94,6 +94,14 @@ public class principal extends javax.swing.JFrame {
         iniciar = new javax.swing.JButton();
         jd_cliente = new javax.swing.JDialog();
         jLabel22 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jl_hora1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        bt_nevacuenta = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jd_mantenimiento = new javax.swing.JDialog();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -103,6 +111,8 @@ public class principal extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jl_hora = new javax.swing.JLabel();
         bt_agregarBishete = new javax.swing.JButton();
+        crearCuenta = new javax.swing.JDialog();
+        jLabel28 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         bt_atm = new javax.swing.JButton();
         bt_users = new javax.swing.JButton();
@@ -382,21 +392,71 @@ public class principal extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel22.setText("ATM Cliente");
 
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel27.setText("Hora actual: ");
+
+        jl_hora1.setText("jLabel27");
+
+        jButton1.setText("Retirar el dinero de una cuenta");
+
+        jButton2.setText("Ingresar dinero a una cuenta");
+
+        jButton3.setText("Ingresar dinero a una cuenta de otra persona");
+
+        bt_nevacuenta.setText("Crear nueva cuenta");
+        bt_nevacuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_nevacuentaMouseClicked(evt);
+            }
+        });
+
+        jButton5.setText("Revisar el estado de una cuenta");
+
+        jButton6.setText("Revisar transacciones");
+
         javax.swing.GroupLayout jd_clienteLayout = new javax.swing.GroupLayout(jd_cliente.getContentPane());
         jd_cliente.getContentPane().setLayout(jd_clienteLayout);
         jd_clienteLayout.setHorizontalGroup(
             jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_clienteLayout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(jLabel22)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                    .addGroup(jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_nevacuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jd_clienteLayout.createSequentialGroup()
+                            .addComponent(jLabel22)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel27)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jl_hora1))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jd_clienteLayout.setVerticalGroup(
             jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_clienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22)
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addGroup(jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel27)
+                    .addComponent(jl_hora1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_nevacuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -472,6 +532,26 @@ public class principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_agregarBishete)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel28.setText("Crear Cuentas");
+
+        javax.swing.GroupLayout crearCuentaLayout = new javax.swing.GroupLayout(crearCuenta.getContentPane());
+        crearCuenta.getContentPane().setLayout(crearCuentaLayout);
+        crearCuentaLayout.setHorizontalGroup(
+            crearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearCuentaLayout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jLabel28)
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+        crearCuentaLayout.setVerticalGroup(
+            crearCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crearCuentaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -653,6 +733,8 @@ public class principal extends javax.swing.JFrame {
                         if (t instanceof Cliente) {
 //                            cc = true;
                             // m = false;
+                            HiloHora h = new HiloHora(jl_hora1);
+                            h.start();
                             jd_cliente.setModal(true);
                             jd_cliente.pack();
                             jd_cliente.setLocationRelativeTo(this);
@@ -712,6 +794,37 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_agregarBisheteMouseClicked
 
+    private void bt_nevacuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_nevacuentaMouseClicked
+        // TODO add your handling code here:
+        try {
+            int cuenta = Integer.parseInt(JOptionPane.showInputDialog(jd_cliente, "Ingrese el número de cuenta"));
+            AdminUsuarios a = new AdminUsuarios("./Users.u");
+            a.cargarArchivo();
+            boolean e = true;
+            int cc = 0, ccc = 0;
+            for (int i = 0; i < a.getUsers().size(); i++) {
+                if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                    for (int j = 0; j < ((Cliente) a.getUsers().get(i)).getCuentas().size(); j++) {
+                        if (cuenta == ((Cliente) a.getUsers().get(i)).getCuentas().get(j).getIdPropietario()) {
+                            cc = i;
+                            ccc = j;
+                            e = false;
+                        }
+                    }
+                }
+            }
+            if (e == true) {
+                ((Cliente) a.getUsers().get(cc)).getCuentas().add(new Cuenta(cuenta, 0, Integer.parseInt(tf_iu.getText())));
+                JOptionPane.showMessageDialog(jd_cliente, "Transaccion exitosa");
+                jd_cliente.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(jd_cliente, "Transaccion incorrecto, cuenta repetida");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_cliente, "Error, dato incorrecto");
+        }
+    }//GEN-LAST:event_bt_nevacuentaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -756,15 +869,22 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_agregarBishete;
     private javax.swing.JButton bt_atm;
     private javax.swing.JButton bt_c;
+    private javax.swing.JButton bt_nevacuenta;
     private javax.swing.JButton bt_users;
     private javax.swing.JComboBox<String> cb_atm;
     private javax.swing.JTextField contra;
+    private javax.swing.JDialog crearCuenta;
     private javax.swing.JButton crearu;
     private com.toedter.calendar.JDateChooser fechaa;
     private com.toedter.calendar.JDateChooser fechan;
     private javax.swing.ButtonGroup grupo;
     private javax.swing.JTextField id;
     private javax.swing.JButton iniciar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -784,6 +904,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -797,6 +919,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_mantenimiento;
     private javax.swing.JDialog jd_users;
     private javax.swing.JLabel jl_hora;
+    private javax.swing.JLabel jl_hora1;
     private javax.swing.JSpinner mante;
     private javax.swing.JTextField nombre1;
     private javax.swing.JTextField nombre2;
