@@ -23,13 +23,13 @@ public class principal extends javax.swing.JFrame {
         initComponents();
         inicio();
     }
-
+    
     public void inicio() {
         administrarATMs a = new administrarATMs("./ATMs.atm");
         a.cargarArchivo();
 //        DefaultComboBoxModel m = (DefaultComboBoxModel) cb_atm.getModel();
         if (a.getAtm().isEmpty()) {
-
+            
         } else {
             DefaultComboBoxModel m = new DefaultComboBoxModel();
             for (ATM t : a.getAtm()) {
@@ -96,6 +96,13 @@ public class principal extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jd_mantenimiento = new javax.swing.JDialog();
         jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        b100a = new javax.swing.JSpinner();
+        jLabel25 = new javax.swing.JLabel();
+        b500a = new javax.swing.JSpinner();
+        jLabel26 = new javax.swing.JLabel();
+        jl_hora = new javax.swing.JLabel();
+        bt_agregarBishete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bt_atm = new javax.swing.JButton();
         bt_users = new javax.swing.JButton();
@@ -395,21 +402,76 @@ public class principal extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel23.setText("ATM Mantenimiento");
 
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel24.setText("Cantidad de billetes de 100 a agregar");
+
+        b100a.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel25.setText("Cantidad de billetes de 500 a agregar");
+
+        b500a.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel26.setText("Hora actual: ");
+
+        jl_hora.setText("jLabel27");
+
+        bt_agregarBishete.setText("Agregar billetes");
+        bt_agregarBishete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarBisheteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_mantenimientoLayout = new javax.swing.GroupLayout(jd_mantenimiento.getContentPane());
         jd_mantenimiento.getContentPane().setLayout(jd_mantenimientoLayout);
         jd_mantenimientoLayout.setHorizontalGroup(
             jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mantenimientoLayout.createSequentialGroup()
-                .addContainerGap(112, Short.MAX_VALUE)
-                .addComponent(jLabel23)
-                .addGap(107, 107, 107))
+            .addGroup(jd_mantenimientoLayout.createSequentialGroup()
+                .addGroup(jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_mantenimientoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(b100a, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_mantenimientoLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel23))
+                    .addGroup(jd_mantenimientoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(b500a, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_mantenimientoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_agregarBishete)
+                            .addComponent(jl_hora))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_mantenimientoLayout.setVerticalGroup(
             jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_mantenimientoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel23)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(b100a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(b500a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_mantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(jl_hora))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_agregarBishete)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -599,6 +661,8 @@ public class principal extends javax.swing.JFrame {
                         if (t instanceof Mantenimiento) {
                             //m = true;
 //                            cc = false;
+                            HiloHora h = new HiloHora(jl_hora);
+                            h.start();
                             jd_mantenimiento.setModal(true);
                             jd_mantenimiento.pack();
                             jd_mantenimiento.setLocationRelativeTo(this);
@@ -632,6 +696,21 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jd_login, "Error fatal");
         }
     }//GEN-LAST:event_iniciarMouseClicked
+
+    private void bt_agregarBisheteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarBisheteMouseClicked
+        // TODO add your handling code here:
+        try {
+            administrarATMs a = new administrarATMs("./ATMs.atm");
+            a.cargarArchivo();
+            a.getAtm().get(cb_atm.getSelectedIndex()).setDen100(a.getAtm().get(cb_atm.getSelectedIndex()).getDen100() + (int) b100a.getValue());
+            a.getAtm().get(cb_atm.getSelectedIndex()).setDen500(a.getAtm().get(cb_atm.getSelectedIndex()).getDen500() + (int) b100a.getValue());
+            a.escribirArchivo();
+            inicio();
+            JOptionPane.showMessageDialog(jd_mantenimiento, "dinero agregado con exito");
+            jd_mantenimiento.setVisible(false);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_agregarBisheteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -671,7 +750,10 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellido;
     private javax.swing.JSpinner b100;
+    private javax.swing.JSpinner b100a;
     private javax.swing.JSpinner b500;
+    private javax.swing.JSpinner b500a;
+    private javax.swing.JButton bt_agregarBishete;
     private javax.swing.JButton bt_atm;
     private javax.swing.JButton bt_c;
     private javax.swing.JButton bt_users;
@@ -699,6 +781,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -711,6 +796,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_mantenimiento;
     private javax.swing.JDialog jd_users;
+    private javax.swing.JLabel jl_hora;
     private javax.swing.JSpinner mante;
     private javax.swing.JTextField nombre1;
     private javax.swing.JTextField nombre2;
