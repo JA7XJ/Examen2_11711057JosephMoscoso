@@ -555,6 +555,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ingresar dinero a una cuenta de otra persona"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bt_nevacuenta">
           <Properties>

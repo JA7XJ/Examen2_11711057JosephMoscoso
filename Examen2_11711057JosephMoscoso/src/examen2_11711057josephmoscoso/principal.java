@@ -441,6 +441,11 @@ public class principal extends javax.swing.JFrame {
         });
 
         jButton3.setText("Ingresar dinero a una cuenta de otra persona");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         bt_nevacuenta.setText("Crear nueva cuenta");
         bt_nevacuenta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1094,29 +1099,30 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if (jl_cuentas.getSelectedIndex() >= 0) {
-                administrarATMs aa = new administrarATMs("./ATMs.atm");
-                aa.cargarArchivo();
-                if (aa.getAtm().get(cb_atm.getSelectedIndex()).getDen100() < (int) c100.getValue() || aa.getAtm().get(cb_atm.getSelectedIndex()).getDen500() < (int) c500.getValue()) {
-                    JOptionPane.showMessageDialog(meter, "Lo sentimos, no hay dinero suficiento");
-                } else {
-                    AdminUsuarios a = new AdminUsuarios("./Users.u");
-                    a.cargarArchivo();
-                    int cc = 0;
-                    for (int i = 0; i < a.getUsers().size(); i++) {
-                        if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
-                            cc = i;
-                        }
+//                administrarATMs aa = new administrarATMs("./ATMs.atm");
+//                aa.cargarArchivo();
+                // if (aa.getAtm().get(cb_atm.getSelectedIndex()).getDen100() < (int) c100.getValue() || aa.getAtm().get(cb_atm.getSelectedIndex()).getDen500() < (int) c500.getValue()) {
+                //      JOptionPane.showMessageDialog(meter, "Lo sentimos, no hay dinero suficiento");
+                // } else {
+                AdminUsuarios a = new AdminUsuarios("./Users.u");
+                a.cargarArchivo();
+                int cc = 0;
+                for (int i = 0; i < a.getUsers().size(); i++) {
+                    if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                        cc = i;
                     }
-                    ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).setSaldo(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + (int) c100.getValue() * 100 + (int) c500.getValue() * 500);
-                    DateFormat f = new SimpleDateFormat("HH:mm:ss");
-                    DateFormat ff = new SimpleDateFormat("dd/MM/YYYY");
-                    Date d = new Date();
-                    a.getUsers().get(cc).getTransacciones().add(new transacciones(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getNumeroCuenta(), "Se ingreso un total de: " + ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + " lps", ff.format(d), f.format(d)));
-                    JOptionPane.showMessageDialog(meter, "Transaccion exitosa");
-                    meter.setVisible(false);
-                    jd_cliente.setVisible(false);
                 }
+                ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).setSaldo(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + (int) c100.getValue() * 100 + (int) c500.getValue() * 500);
+                DateFormat f = new SimpleDateFormat("HH:mm:ss");
+                DateFormat ff = new SimpleDateFormat("dd/MM/YYYY");
+                Date d = new Date();
+                a.getUsers().get(cc).getTransacciones().add(new transacciones(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getNumeroCuenta(), "Se ingreso un total de: " + ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + " lps", ff.format(d), f.format(d)));
+                JOptionPane.showMessageDialog(meter, "Transaccion exitosa");
+                a.escribirArchivo();
+                meter.setVisible(false);
+                jd_cliente.setVisible(false);
             }
+            //}
         } catch (Exception e) {
             JOptionPane.showMessageDialog(meter, "Error fatal");
         }
@@ -1125,7 +1131,6 @@ public class principal extends javax.swing.JFrame {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
         if (a.getUsers().isEmpty()) {
-
         } else {
             DefaultListModel m = (DefaultListModel) historial.getModel();
             m.removeAllElements();
@@ -1207,7 +1212,7 @@ public class principal extends javax.swing.JFrame {
                 AdminUsuarios a = new AdminUsuarios("./Users.u");
                 a.cargarArchivo();
                 DefaultListModel m = (DefaultListModel) jl_cuentas1.getModel();
-                m.removeAllElements();
+               // m.removeAllElements();
                 int cc = 0, ccc = 0;
                 for (int i = 0; i < a.getUsers().size(); i++) {
                     if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
@@ -1260,33 +1265,39 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if (jl_cuentas2.getSelectedIndex() >= 0) {
-                administrarATMs aa = new administrarATMs("./ATMs.atm");
-                aa.cargarArchivo();
-                if (aa.getAtm().get(cb_atm.getSelectedIndex()).getDen100() < (int) c102.getValue() || aa.getAtm().get(cb_atm.getSelectedIndex()).getDen500() < (int) c501.getValue()) {
-                    JOptionPane.showMessageDialog(meter, "Lo sentimos, no hay dinero suficiento");
-                } else {
-                    AdminUsuarios a = new AdminUsuarios("./Users.u");
-                    a.cargarArchivo();
-                    int cc = 0;
-                    for (int i = 0; i < a.getUsers().size(); i++) {
-                        if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
-                            cc = i;
-                        }
+//                administrarATMs aa = new administrarATMs("./ATMs.atm");
+//                aa.cargarArchivo();
+//                if (aa.getAtm().get(cb_atm.getSelectedIndex()).getDen100() < (int) c102.getValue() || aa.getAtm().get(cb_atm.getSelectedIndex()).getDen500() < (int) c501.getValue()) {
+//                    JOptionPane.showMessageDialog(meter, "Lo sentimos, no hay dinero suficiento");
+//                } else {
+                AdminUsuarios a = new AdminUsuarios("./Users.u");
+                a.cargarArchivo();
+                int cc = 0;
+                for (int i = 0; i < a.getUsers().size(); i++) {
+                    if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                        cc = i;
                     }
-                    ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).setSaldo(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getSaldo() - (int) c102.getValue() * 100 + (int) c501.getValue() * 500);
-                    DateFormat f = new SimpleDateFormat("HH:mm:ss");
-                    DateFormat ff = new SimpleDateFormat("dd/MM/YYYY");
-                    Date d = new Date();
-                    a.getUsers().get(cc).getTransacciones().add(new transacciones(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getNumeroCuenta(), "Se retiro un total de: " + ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getSaldo() + " lps", ff.format(d), f.format(d)));
-                    JOptionPane.showMessageDialog(jd_retirar, "Transaccion exitosa");
-                    jd_retirar.setVisible(false);
-                    jd_cliente.setVisible(false);
                 }
+                ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).setSaldo(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getSaldo() - (int) c102.getValue() * 100 + (int) c501.getValue() * 500);
+                DateFormat f = new SimpleDateFormat("HH:mm:ss");
+                DateFormat ff = new SimpleDateFormat("dd/MM/YYYY");
+                Date d = new Date();
+                a.getUsers().get(cc).getTransacciones().add(new transacciones(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getNumeroCuenta(), "Se retiro un total de: " + ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getSaldo() + " lps", ff.format(d), f.format(d)));
+                JOptionPane.showMessageDialog(jd_retirar, "Transaccion exitosa");
+                a.escribirArchivo();
+                jd_retirar.setVisible(false);
+                jd_cliente.setVisible(false);
+//                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(meter, "Error fatal");
         }
     }//GEN-LAST:event_bt_mandarPisto1MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3MouseClicked
     public void llenarCuentas1() {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
