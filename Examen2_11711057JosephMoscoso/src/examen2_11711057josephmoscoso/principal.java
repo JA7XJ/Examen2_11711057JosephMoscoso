@@ -25,13 +25,13 @@ public class principal extends javax.swing.JFrame {
         initComponents();
         inicio();
     }
-    
+
     public void inicio() {
         administrarATMs a = new administrarATMs("./ATMs.atm");
         a.cargarArchivo();
 //        DefaultComboBoxModel m = (DefaultComboBoxModel) cb_atm.getModel();
         if (a.getAtm().isEmpty()) {
-            
+
         } else {
             DefaultComboBoxModel m = new DefaultComboBoxModel();
             for (ATM t : a.getAtm()) {
@@ -98,7 +98,7 @@ public class principal extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jl_hora1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bt_retirarPisto = new javax.swing.JButton();
         bt_ingresar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         bt_nevacuenta = new javax.swing.JButton();
@@ -133,6 +133,15 @@ public class principal extends javax.swing.JFrame {
         versaldo = new javax.swing.JButton();
         c101 = new javax.swing.JSpinner();
         jLabel33 = new javax.swing.JLabel();
+        jd_retirar = new javax.swing.JDialog();
+        jLabel34 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jl_cuentas2 = new javax.swing.JList<>();
+        bt_mandarPisto1 = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
+        c102 = new javax.swing.JSpinner();
+        jLabel36 = new javax.swing.JLabel();
+        c501 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         bt_atm = new javax.swing.JButton();
         bt_users = new javax.swing.JButton();
@@ -417,7 +426,12 @@ public class principal extends javax.swing.JFrame {
 
         jl_hora1.setText("jLabel27");
 
-        jButton1.setText("Retirar el dinero de una cuenta");
+        bt_retirarPisto.setText("Retirar el dinero de una cuenta");
+        bt_retirarPisto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_retirarPistoMouseClicked(evt);
+            }
+        });
 
         bt_ingresar.setText("Ingresar dinero a una cuenta");
         bt_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -462,7 +476,7 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(bt_nevacuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                         .addComponent(bt_ingresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_retirarPisto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jd_clienteLayout.createSequentialGroup()
                             .addComponent(jLabel22)
                             .addGap(18, 18, 18)
@@ -480,7 +494,7 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jLabel27)
                     .addComponent(jl_hora1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_retirarPisto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -625,7 +639,7 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(meterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(c100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -724,6 +738,73 @@ public class principal extends javax.swing.JFrame {
         c101.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         jLabel33.setText("500L(cantidad)");
+
+        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel34.setText("Retirar dinero");
+
+        jl_cuentas2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jl_cuentas2.setModel(new DefaultListModel());
+        jScrollPane4.setViewportView(jl_cuentas2);
+
+        bt_mandarPisto1.setText("Retirar");
+        bt_mandarPisto1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_mandarPisto1MouseClicked(evt);
+            }
+        });
+
+        jLabel35.setText("100L(cantidad)");
+
+        c102.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel36.setText("500L(cantidad)");
+
+        c501.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        javax.swing.GroupLayout jd_retirarLayout = new javax.swing.GroupLayout(jd_retirar.getContentPane());
+        jd_retirar.getContentPane().setLayout(jd_retirarLayout);
+        jd_retirarLayout.setHorizontalGroup(
+            jd_retirarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_retirarLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(c102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(c501, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
+            .addGroup(jd_retirarLayout.createSequentialGroup()
+                .addGroup(jd_retirarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_retirarLayout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel34))
+                    .addGroup(jd_retirarLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_retirarLayout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(bt_mandarPisto1)))
+                .addContainerGap(69, Short.MAX_VALUE))
+        );
+        jd_retirarLayout.setVerticalGroup(
+            jd_retirarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_retirarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jd_retirarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(c102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36)
+                    .addComponent(c501, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(bt_mandarPisto1)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1044,7 +1125,7 @@ public class principal extends javax.swing.JFrame {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
         if (a.getUsers().isEmpty()) {
-            
+
         } else {
             DefaultListModel m = (DefaultListModel) historial.getModel();
             m.removeAllElements();
@@ -1104,7 +1185,7 @@ public class principal extends javax.swing.JFrame {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
         if (a.getUsers().isEmpty()) {
-            
+
         } else {
             DefaultListModel m = (DefaultListModel) jl_cuentas1.getModel();
             m.removeAllElements();
@@ -1144,11 +1225,73 @@ public class principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_versaldoMouseClicked
+    public void llenarCuentas3() {
+        AdminUsuarios a = new AdminUsuarios("./Users.u");
+        a.cargarArchivo();
+        if (a.getUsers().isEmpty()) {
+
+        } else {
+            DefaultListModel m = (DefaultListModel) jl_cuentas2.getModel();
+            m.removeAllElements();
+            for (int i = 0; i < a.getUsers().size(); i++) {
+                if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                    for (int j = 0; j < ((Cliente) a.getUsers().get(i)).getCuentas().size(); j++) {
+                        m.addElement(((Cliente) a.getUsers().get(i)).getCuentas().get(j));
+                    }
+                }
+            }
+            jl_cuentas2.setModel(m);
+        }
+        a.escribirArchivo();
+    }
+    private void bt_retirarPistoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_retirarPistoMouseClicked
+        // TODO add your handling code here:
+        try {
+            llenarCuentas3();
+            jd_retirar.setModal(true);
+            jd_retirar.pack();
+            jd_retirar.setLocationRelativeTo(this);
+            jd_retirar.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_retirarPistoMouseClicked
+
+    private void bt_mandarPisto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_mandarPisto1MouseClicked
+        // TODO add your handling code here:
+        try {
+            if (jl_cuentas2.getSelectedIndex() >= 0) {
+                administrarATMs aa = new administrarATMs("./ATMs.atm");
+                aa.cargarArchivo();
+                if (aa.getAtm().get(cb_atm.getSelectedIndex()).getDen100() < (int) c102.getValue() || aa.getAtm().get(cb_atm.getSelectedIndex()).getDen500() < (int) c501.getValue()) {
+                    JOptionPane.showMessageDialog(meter, "Lo sentimos, no hay dinero suficiento");
+                } else {
+                    AdminUsuarios a = new AdminUsuarios("./Users.u");
+                    a.cargarArchivo();
+                    int cc = 0;
+                    for (int i = 0; i < a.getUsers().size(); i++) {
+                        if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                            cc = i;
+                        }
+                    }
+                    ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).setSaldo(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getSaldo() - (int) c102.getValue() * 100 + (int) c501.getValue() * 500);
+                    DateFormat f = new SimpleDateFormat("HH:mm:ss");
+                    DateFormat ff = new SimpleDateFormat("dd/MM/YYYY");
+                    Date d = new Date();
+                    a.getUsers().get(cc).getTransacciones().add(new transacciones(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getNumeroCuenta(), "Se retiro un total de: " + ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas2.getSelectedIndex()).getSaldo() + " lps", ff.format(d), f.format(d)));
+                    JOptionPane.showMessageDialog(jd_retirar, "Transaccion exitosa");
+                    jd_retirar.setVisible(false);
+                    jd_cliente.setVisible(false);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(meter, "Error fatal");
+        }
+    }//GEN-LAST:event_bt_mandarPisto1MouseClicked
     public void llenarCuentas1() {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
         if (a.getUsers().isEmpty()) {
-            
+
         } else {
             DefaultListModel m = (DefaultListModel) jl_cuentas.getModel();
             m.removeAllElements();
@@ -1210,12 +1353,16 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_c;
     private javax.swing.JButton bt_ingresar;
     private javax.swing.JButton bt_mandarPisto;
+    private javax.swing.JButton bt_mandarPisto1;
     private javax.swing.JButton bt_nevacuenta;
+    private javax.swing.JButton bt_retirarPisto;
     private javax.swing.JButton bt_revisarsaldo;
     private javax.swing.JButton bt_users;
     private javax.swing.JSpinner c100;
     private javax.swing.JSpinner c101;
+    private javax.swing.JSpinner c102;
     private javax.swing.JSpinner c500;
+    private javax.swing.JSpinner c501;
     private javax.swing.JComboBox<String> cb_atm;
     private javax.swing.JTextField contra;
     private javax.swing.JButton crearu;
@@ -1225,7 +1372,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JList<String> historial;
     private javax.swing.JTextField id;
     private javax.swing.JButton iniciar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
@@ -1255,6 +1401,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1264,15 +1413,18 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JDialog jd_atm;
     private javax.swing.JDialog jd_cliente;
     private javax.swing.JDialog jd_estado;
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_mantenimiento;
+    private javax.swing.JDialog jd_retirar;
     private javax.swing.JDialog jd_transacciones;
     private javax.swing.JDialog jd_users;
     private javax.swing.JList<String> jl_cuentas;
     private javax.swing.JList<String> jl_cuentas1;
+    private javax.swing.JList<String> jl_cuentas2;
     private javax.swing.JLabel jl_hora;
     private javax.swing.JLabel jl_hora1;
     private javax.swing.JSpinner mante;
