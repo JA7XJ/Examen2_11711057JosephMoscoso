@@ -1296,7 +1296,10 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        
+        try {
+            JOptionPane.showMessageDialog(jd_cliente, "Opcion no terminada");
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jButton3MouseClicked
     public void llenarCuentas1() {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
