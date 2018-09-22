@@ -25,13 +25,13 @@ public class principal extends javax.swing.JFrame {
         initComponents();
         inicio();
     }
-
+    
     public void inicio() {
         administrarATMs a = new administrarATMs("./ATMs.atm");
         a.cargarArchivo();
 //        DefaultComboBoxModel m = (DefaultComboBoxModel) cb_atm.getModel();
         if (a.getAtm().isEmpty()) {
-
+            
         } else {
             DefaultComboBoxModel m = new DefaultComboBoxModel();
             for (ATM t : a.getAtm()) {
@@ -102,7 +102,7 @@ public class principal extends javax.swing.JFrame {
         bt_ingresar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         bt_nevacuenta = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bt_revisarsaldo = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jd_mantenimiento = new javax.swing.JDialog();
         jLabel23 = new javax.swing.JLabel();
@@ -126,6 +126,13 @@ public class principal extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         historial = new javax.swing.JList<>();
+        jd_estado = new javax.swing.JDialog();
+        jLabel32 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_cuentas1 = new javax.swing.JList<>();
+        versaldo = new javax.swing.JButton();
+        c101 = new javax.swing.JSpinner();
+        jLabel33 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         bt_atm = new javax.swing.JButton();
         bt_users = new javax.swing.JButton();
@@ -428,7 +435,12 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Revisar el estado de una cuenta");
+        bt_revisarsaldo.setText("Revisar el estado de una cuenta");
+        bt_revisarsaldo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_revisarsaldoMouseClicked(evt);
+            }
+        });
 
         jButton6.setText("Revisar transacciones");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -446,7 +458,7 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                     .addGroup(jd_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_revisarsaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_nevacuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                         .addComponent(bt_ingresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -476,7 +488,7 @@ public class principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_nevacuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_revisarsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -663,6 +675,55 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel32.setText("Ver saldo");
+
+        jl_cuentas1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jl_cuentas1.setModel(new DefaultListModel());
+        jScrollPane3.setViewportView(jl_cuentas1);
+
+        versaldo.setText("Ver saldo");
+        versaldo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                versaldoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_estadoLayout = new javax.swing.GroupLayout(jd_estado.getContentPane());
+        jd_estado.getContentPane().setLayout(jd_estadoLayout);
+        jd_estadoLayout.setHorizontalGroup(
+            jd_estadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_estadoLayout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addGroup(jd_estadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(versaldo)
+                    .addComponent(jLabel32))
+                .addContainerGap(159, Short.MAX_VALUE))
+            .addGroup(jd_estadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jd_estadoLayout.createSequentialGroup()
+                    .addGap(65, 65, 65)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(65, Short.MAX_VALUE)))
+        );
+        jd_estadoLayout.setVerticalGroup(
+            jd_estadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_estadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
+                .addComponent(versaldo)
+                .addGap(30, 30, 30))
+            .addGroup(jd_estadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jd_estadoLayout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(78, Short.MAX_VALUE)))
+        );
+
+        c101.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel33.setText("500L(cantidad)");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -951,27 +1012,29 @@ public class principal extends javax.swing.JFrame {
     private void bt_mandarPistoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_mandarPistoMouseClicked
         // TODO add your handling code here:
         try {
-            administrarATMs aa = new administrarATMs("./ATMs.atm");
-            aa.cargarArchivo();
-            if (aa.getAtm().get(cb_atm.getSelectedIndex()).getDen100() < (int) c100.getValue() || aa.getAtm().get(cb_atm.getSelectedIndex()).getDen500() < (int) c500.getValue()) {
-                JOptionPane.showMessageDialog(meter, "Lo sentimos, no hay dinero suficiento");
-            } else {
-                AdminUsuarios a = new AdminUsuarios("./Users.u");
-                a.cargarArchivo();
-                int cc = 0;
-                for (int i = 0; i < a.getUsers().size(); i++) {
-                    if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
-                        cc = i;
+            if (jl_cuentas.getSelectedIndex() >= 0) {
+                administrarATMs aa = new administrarATMs("./ATMs.atm");
+                aa.cargarArchivo();
+                if (aa.getAtm().get(cb_atm.getSelectedIndex()).getDen100() < (int) c100.getValue() || aa.getAtm().get(cb_atm.getSelectedIndex()).getDen500() < (int) c500.getValue()) {
+                    JOptionPane.showMessageDialog(meter, "Lo sentimos, no hay dinero suficiento");
+                } else {
+                    AdminUsuarios a = new AdminUsuarios("./Users.u");
+                    a.cargarArchivo();
+                    int cc = 0;
+                    for (int i = 0; i < a.getUsers().size(); i++) {
+                        if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                            cc = i;
+                        }
                     }
+                    ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).setSaldo(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + (int) c100.getValue() * 100 + (int) c500.getValue() * 500);
+                    DateFormat f = new SimpleDateFormat("HH:mm:ss");
+                    DateFormat ff = new SimpleDateFormat("dd/MM/YYYY");
+                    Date d = new Date();
+                    a.getUsers().get(cc).getTransacciones().add(new transacciones(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getNumeroCuenta(), "Se ingreso un total de: " + ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + " lps", ff.format(d), f.format(d)));
+                    JOptionPane.showMessageDialog(meter, "Transaccion exitosa");
+                    meter.setVisible(false);
+                    jd_cliente.setVisible(false);
                 }
-                ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).setSaldo(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + (int) c100.getValue() * 100 + (int) c500.getValue() * 500);
-                DateFormat f = new SimpleDateFormat("HH:mm:ss");
-                DateFormat ff = new SimpleDateFormat("dd/MM/YYYY");
-                Date d = new Date();
-                a.getUsers().get(cc).getTransacciones().add(new transacciones(((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getNumeroCuenta(), "Se ingreso un total de: " + ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas.getSelectedIndex()).getSaldo() + " lps", ff.format(d), f.format(d)));
-                JOptionPane.showMessageDialog(meter, "Transaccion exitosa");
-                meter.setVisible(false);
-                jd_cliente.setVisible(false);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(meter, "Error fatal");
@@ -981,7 +1044,7 @@ public class principal extends javax.swing.JFrame {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
         if (a.getUsers().isEmpty()) {
-
+            
         } else {
             DefaultListModel m = (DefaultListModel) historial.getModel();
             m.removeAllElements();
@@ -1025,11 +1088,67 @@ public class principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jd_transaccionesWindowClosed
+
+    private void bt_revisarsaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_revisarsaldoMouseClicked
+        // TODO add your handling code here:
+        try {
+            llenarCuentas2();
+            jd_estado.setModal(true);
+            jd_estado.pack();
+            jd_estado.setLocationRelativeTo(this);
+            jd_estado.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_bt_revisarsaldoMouseClicked
+    public void llenarCuentas2() {
+        AdminUsuarios a = new AdminUsuarios("./Users.u");
+        a.cargarArchivo();
+        if (a.getUsers().isEmpty()) {
+            
+        } else {
+            DefaultListModel m = (DefaultListModel) jl_cuentas1.getModel();
+            m.removeAllElements();
+            for (int i = 0; i < a.getUsers().size(); i++) {
+                if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                    for (int j = 0; j < ((Cliente) a.getUsers().get(i)).getCuentas().size(); j++) {
+                        m.addElement(((Cliente) a.getUsers().get(i)).getCuentas().get(j));
+                    }
+                }
+            }
+            jl_cuentas1.setModel(m);
+        }
+        a.escribirArchivo();
+    }
+    private void versaldoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_versaldoMouseClicked
+        // TODO add your handling code here:
+        try {
+            if (jl_cuentas1.getSelectedIndex() >= 0) {
+                AdminUsuarios a = new AdminUsuarios("./Users.u");
+                a.cargarArchivo();
+                DefaultListModel m = (DefaultListModel) jl_cuentas1.getModel();
+                m.removeAllElements();
+                int cc = 0, ccc = 0;
+                for (int i = 0; i < a.getUsers().size(); i++) {
+                    if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                        //for (int j = 0; j < ((Cliente) a.getUsers().get(i)).getCuentas().size(); j++) {
+                        cc = i;
+                        //  ccc = j;
+                        //}
+                    }
+                }
+                JOptionPane.showMessageDialog(jd_estado, "El saldo es: " + Integer.toString((int) ((Cliente) a.getUsers().get(cc)).getCuentas().get(jl_cuentas1.getSelectedIndex()).getSaldo()));
+                jd_estado.setVisible(false);
+                jd_cliente.setVisible(false);
+                a.escribirArchivo();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_versaldoMouseClicked
     public void llenarCuentas1() {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
         if (a.getUsers().isEmpty()) {
-
+            
         } else {
             DefaultListModel m = (DefaultListModel) jl_cuentas.getModel();
             m.removeAllElements();
@@ -1092,8 +1211,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_ingresar;
     private javax.swing.JButton bt_mandarPisto;
     private javax.swing.JButton bt_nevacuenta;
+    private javax.swing.JButton bt_revisarsaldo;
     private javax.swing.JButton bt_users;
     private javax.swing.JSpinner c100;
+    private javax.swing.JSpinner c101;
     private javax.swing.JSpinner c500;
     private javax.swing.JComboBox<String> cb_atm;
     private javax.swing.JTextField contra;
@@ -1106,7 +1227,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton iniciar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1133,6 +1253,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1141,13 +1263,16 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JDialog jd_atm;
     private javax.swing.JDialog jd_cliente;
+    private javax.swing.JDialog jd_estado;
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_mantenimiento;
     private javax.swing.JDialog jd_transacciones;
     private javax.swing.JDialog jd_users;
     private javax.swing.JList<String> jl_cuentas;
+    private javax.swing.JList<String> jl_cuentas1;
     private javax.swing.JLabel jl_hora;
     private javax.swing.JLabel jl_hora1;
     private javax.swing.JSpinner mante;
@@ -1161,6 +1286,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPasswordField tf_ip;
     private javax.swing.JTextField tf_iu;
     private javax.swing.JTextField tf_ubicacion;
+    private javax.swing.JButton versaldo;
     // End of variables declaration//GEN-END:variables
     int c = 0;
 }
