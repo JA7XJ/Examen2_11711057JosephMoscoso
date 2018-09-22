@@ -122,6 +122,10 @@ public class principal extends javax.swing.JFrame {
         c100 = new javax.swing.JSpinner();
         jLabel30 = new javax.swing.JLabel();
         c500 = new javax.swing.JSpinner();
+        jd_transacciones = new javax.swing.JDialog();
+        jLabel31 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        historial = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         bt_atm = new javax.swing.JButton();
         bt_users = new javax.swing.JButton();
@@ -427,6 +431,11 @@ public class principal extends javax.swing.JFrame {
         jButton5.setText("Revisar el estado de una cuenta");
 
         jButton6.setText("Revisar transacciones");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_clienteLayout = new javax.swing.GroupLayout(jd_cliente.getContentPane());
         jd_cliente.getContentPane().setLayout(jd_clienteLayout);
@@ -613,6 +622,45 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(c500, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(bt_mandarPisto)
+                .addContainerGap())
+        );
+
+        jd_transacciones.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                jd_transaccionesWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                jd_transaccionesWindowClosing(evt);
+            }
+        });
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel31.setText("Historial transaccion");
+
+        historial.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        historial.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(historial);
+
+        javax.swing.GroupLayout jd_transaccionesLayout = new javax.swing.GroupLayout(jd_transacciones.getContentPane());
+        jd_transacciones.getContentPane().setLayout(jd_transaccionesLayout);
+        jd_transaccionesLayout.setHorizontalGroup(
+            jd_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_transaccionesLayout.createSequentialGroup()
+                .addContainerGap(111, Short.MAX_VALUE)
+                .addComponent(jLabel31)
+                .addGap(103, 103, 103))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_transaccionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
+        );
+        jd_transaccionesLayout.setVerticalGroup(
+            jd_transaccionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_transaccionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -929,6 +977,54 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(meter, "Error fatal");
         }
     }//GEN-LAST:event_bt_mandarPistoMouseClicked
+    public void estado() {
+        AdminUsuarios a = new AdminUsuarios("./Users.u");
+        a.cargarArchivo();
+        if (a.getUsers().isEmpty()) {
+
+        } else {
+            DefaultListModel m = (DefaultListModel) historial.getModel();
+            m.removeAllElements();
+            for (int i = 0; i < a.getUsers().size(); i++) {
+                if (tf_iu.getText().equals(Integer.toString(a.getUsers().get(i).getIduser())) && tf_ip.getText().equals(a.getUsers().get(i).getContraseña())) {
+                    for (int j = 0; j < a.getUsers().get(i).getTransacciones().size(); j++) {
+                        m.addElement(a.getUsers().get(i).getTransacciones().get(j));
+                    }
+                }
+            }
+            historial.setModel(m);
+        }
+        a.escribirArchivo();
+    }
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        try {
+            estado();
+            jd_transacciones.setModal(true);
+            jd_transacciones.pack();
+            jd_transacciones.setLocationRelativeTo(this);
+            jd_transacciones.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jd_transaccionesWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jd_transaccionesWindowClosing
+        // TODO add your handling code here:
+        try {
+            jd_transacciones.setVisible(false);
+            jd_cliente.setVisible(false);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jd_transaccionesWindowClosing
+
+    private void jd_transaccionesWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_jd_transaccionesWindowClosed
+        // TODO add your handling code here:
+        try {
+            jd_transacciones.setVisible(false);
+            jd_cliente.setVisible(false);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jd_transaccionesWindowClosed
     public void llenarCuentas1() {
         AdminUsuarios a = new AdminUsuarios("./Users.u");
         a.cargarArchivo();
@@ -1005,6 +1101,7 @@ public class principal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser fechaa;
     private com.toedter.calendar.JDateChooser fechan;
     private javax.swing.ButtonGroup grupo;
+    private javax.swing.JList<String> historial;
     private javax.swing.JTextField id;
     private javax.swing.JButton iniciar;
     private javax.swing.JButton jButton1;
@@ -1035,6 +1132,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1042,10 +1140,12 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jd_atm;
     private javax.swing.JDialog jd_cliente;
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_mantenimiento;
+    private javax.swing.JDialog jd_transacciones;
     private javax.swing.JDialog jd_users;
     private javax.swing.JList<String> jl_cuentas;
     private javax.swing.JLabel jl_hora;
